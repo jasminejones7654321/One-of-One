@@ -11,8 +11,16 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <!--- JavaScript !-->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  </head>
+src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("button").click(function(){
+        $("#div1").fadeIn();
+        $("#div2").fadeIn("slow");
+        $("#div3").fadeIn(3000);
+    });
+});
+</script>  </head>
 
   <!-- Navbar -->
 <nav class="navbar navbar-default">
@@ -45,17 +53,10 @@
 </div>
 
 <!-- Second Container -->
-<div class="container-fluid bg-2 text-center">
+<div id="div1"<div class="container-fluid bg-2 text-center">
   <h3 class="margin">Microblading Facts</h3>
-  <script>
-$(document).ready(function(){
-    $("button").click(function(){
-        $("#facts").fadeIn();
-    });
-});
-</script>
-  <button>Microblading Facts</button><br><br>
-  <p id="facts"><ul>
+  <button>Click to fade in boxes</button><br>
+<p><ul>
     <li> Peeling is absolutely normal. Avoid any sort of picking the dry skin </li>
     <li> Never rub the treated area </li>
     <li> The way you take care of your new brows after microblading will have a great impact on the way it looks </li>

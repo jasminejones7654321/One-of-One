@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Shopping Cart </title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://code.jquery.com/jquery-2.2.4.js" charset="utf-8"></script>
+    <meta name="robots" content="noindex,follow" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css.css">
+	<link href="https://fonts.googleapis.com/css?family=Lobster|Shadows+Into+Light" rel="stylesheet">
+	</head>
+
+<h1 class="heading"><center>Pets R Us  <img src="paw.png" alt="" width="100" height="80"/></center></h1>
+
+	<div class="shopping-cart">
+      <!-- Title -->
+      <div class="title">
+	      <h1> Shopping Cart </h1>
+      </div>
+      
+
+
+<!-- Product #1 -----------------CATS------------------------------>
+      <div class="item">
+        <div class="buttons">
+          <span class ="delete-btn"></span>
+          <span class="like-btn"></span>
+        </div>
+
+       <div class="image">
+          <img src="catsFinal.jpg" alt="" width="120" height="80">
+	       </div>
+
+        <div class="description">
+		<span id ="cat"><h3>Cats</h3> <p> $25 each!!</p></span>
+          <span>Adults/Kittens</span>
+          
+        </div>
+
+        <div class="quantity">
+          <button class="plus-btn" type="button" name="button" onclick="cChangea()">
+            <img src="plus.png" alt="" />
+          </button>
+          <input type="number" name="name" value="1">
+          <button class="minus-btn" type="button" name="button" onclick="cChangem()">
+            <img src="minus.png" alt="" />
+             
+          </button>
+        </div>
+ 
+        <div class="total-price" id="cprice" type="number">25</div>
+        
+      </div>
+
+
+<!-- Product #2 --------FISH------------------------------->
+      <div class="item">
+        <div class="buttons">
+          <span class="delete-btn"></span>
+          <span class="like-btn"></span>
+        </div>
+
+        <div class="image">
+          <img src="aquaticsFinal.jfif" alt="" width="120" height="80">
+        </div>
+
+        <div class="description">
+		<span id="fish"><h3>Aquatic</h3><p> $10 each!!</p></span>
+          
+          <span>Ocean Fish</span>
+        </div>
+
+        <div class="quantity">
+          <button class="plus-btn" type="button" name="button" onclick="fChangea()">
+            <img src="plus.png" alt="" />
+          </button>
+          <input type ="number" name="name" value="1">
+          <button class="minus-btn" type="button" name="button" onclick="fChangem()">
+            <img src="minus.png" alt="" />
+          </button>
+        </div>
+
+        <div class="total-price" id="fprice">45</div>
+		</div>
+		
+		
+<!--Product 3 --------------------DOGS------------------------------>
+	  <div class="item">
+        <div class="buttons">
+          <span class ="delete-btn"></span>
+          <span class="like-btn"></span>
+        </div>
+		  
+       <div class="image">
+          <img src="dogFinal.jfif" alt="" width="120" height="80">
+	       </div>
+
+        <div class="description">
+		<span id ="dog"><h3>Dog</h3><p> $25 each!!</p></span>
+          <span>Adults/Puppies</span>
+          
+        </div>
+
+        <div class="quantity">
+          <button class="plus-btn" type="button" name="button" onclick="dChangea()">
+            <img src="plus.png" alt="" />
+          </button>
+          <input type="number" name="name" value="1">
+          <button class="minus-btn" type="button" name="button" onclick="dChangem()">
+            <img src="minus.png" alt="" />
+          </button>
+        </div>
+
+        <div class="total-price" id="dprice" type="number">25</div>
+      </div>
+
+
+<!-- Product #4 ----------CHECKOUT---------------->
+      <div class="checkout">
+        
+
+       <div class="subtotal" id="total"> 
+	  <span><h3> Subtotal </h3> 
+	  <p id="sub"> 25 </p>
+	  </span>
+		  <span><h3> Total </h3></span>
+		 <span> <button onclick="Cart()"><h3> Checkout </h3>
+			 </button></span>
+	      </div>
+        </div>
+      </div>
+</div>
+
+
+
+    <script type="text/javascript">
+    
+//------------ Java Script Section -------------------------------------------------------
+      $('.minus-btn').on('click', function(e) {
+    		e.preventDefault();
+    		var $this = $(this);
+    		var $input = $this.closest('div').find('input');
+    		var value = parseInt($input.val());
+				
+    		if (value > 1) {
+    			value = value - 1;
+    		} else {
+    			value = 0;
+    		}
+
+        $input.val(value);
+
+    	});
+
+    	$('.plus-btn').on('click', function(e) {
+    		e.preventDefault();
+    		var $this = $(this);
+    		var $input = $this.closest('div').find('input');
+    		var value = parseInt($input.val());
+
+    		if (value < 100) {
+      		value = value + 1;
+    		} else {
+    			value =100;
+    		}
+
+    		$input.val(value);
+    		
+    	});
+
+      $('.like-btn').on('click', function() {
+        $(this).toggleClass('is-active');
+      });
+	    
+	    
+	function addtoCart(){
+		knames.push(document.ElementById("kitt").value)
+		kprice.push(parseInt(document.ElementById("cprice").value))
+		knames.push(parseInt(document.getElementById("fprice").value))
+		kprice.push(parseInt(document.getElementById("dprice").value))
+		knames.push(parseInt(document.getElementById("pup").value))
+		kprice.push(parseInt(document.getElementById("price3").value))
+		displayCart()
+	}
+		
+	   
+	   window.alert("Welcome to Shopping Cart!");
+	   window.alert("If you let an item reach 0 it will be removed from the Shopping Cart!");
+	   
+	   //Objects
+	   var animals = {};
+	   
+animals.cat = {
+  name: "Cats",
+  price: "25",
+  quantity: "1",
+};
+
+animals.fish = {
+  name: "Fish",
+  price: "10",
+  quantity: "1",
+};
+
+animals.dog = {
+  name: "Dogs",
+  price: "25",
+  quantity: "1",
+};
+
+list(animals);
+
+//Change the SubTotal
+	   function Changesub(){
+  		var total = document.getElementById("sub"); 
+		
+		total = document.getElementById("cprice") + document.getElementById("dprice");
+		total();
+		window.alert("total");
+}
+
+	  
+	   //Change the Price 
+	   function cChangem(){
+  		var cha = document.getElementById("cprice");
+ 		var cat = 25; 
+		
+		 if (cha.innerHTML > cat) {
+    			cha.innerHTML = cha.innerHTML - cat;
+    		} else {
+    			cha.innerHTML = 0;
+    			window.alert("This item is removed!");
+    		}
+}
+
+function fChangem(){
+  		var cha = document.getElementById("fprice");
+ 		var fish = 10; 
+		
+		 if (cha.innerHTML > fish) {
+    			cha.innerHTML = cha.innerHTML - fish;
+    		} else {
+    			cha.innerHTML = 0;
+    			window.alert("This item is removed!");
+    		}
+}
+
+function dChangem(){
+  		var cha = document.getElementById("dprice");
+ 		var dog = 25; 
+		
+		 if (cha.innerHTML > dog) {
+    			cha.innerHTML = cha.innerHTML - dog;
+    		} else {
+    			cha.innerHTML = 0;
+    			window.alert("This item is removed!");
+    		}
+}
+
+ //Change the Price 
+function cChangea(){
+  		var ma = document.getElementById("cprice");
+  		ma.setAttribute("type", "number");
+ 		var cat = 25; 
+		
+		 if (ma.innerHTML >= cat) {
+    			ma.innerHTML = cat + parseInt(ma.innerHTML);
+    		} else {
+    			ma.innerHTML = 0;
+    		}
+}			
+
+function fChangea(){
+  		var ma = document.getElementById("fprice");
+  		ma.setAttribute("type", "number");
+ 		var fish = 10; 
+		
+		 if (ma.innerHTML >= fish) {
+    			ma.innerHTML = fish + parseInt(ma.innerHTML);
+    		} else {
+    			ma.innerHTML = 0;
+    		}
+}			
+
+function dChangea(){
+  		var ma = document.getElementById("dprice");
+  		ma.setAttribute("type", "number");
+ 		var dog = 25; 
+		
+		 if (ma.innerHTML >= dog) {
+    			ma.innerHTML = dog + parseInt(ma.innerHTML);
+    		} else {
+    			ma.innerHTML = 0;
+    		}
+}	
+
+
+function Cart(){
+	 if (confirm("Are you sure you want to checkout?")) {
+    window.alert("Great!");
+    window.alert(document.getElementById("sub").innerHTML);
+    //window.alert(document.body.innerHTML);
+    
+    
+    
+} else {
+    window.alert("Okay! Take your time.");
+}
+}
+if (cha.innerHTML = 0)	{
+window.alert("This item is removed!");
+}	
+    </script>
+  </body>
+  
+  <!--
+  
+  ================== NOTES =========================
+ 
+  (	**HTML	~~JS	)
+  
+===Change the Price Function
+  ** 
+  <p id="para1">Yes!</p> 
+  <button onclick="YesNo()">Change</button>
+  
+  ~~
+  function YesNo(){
+  var No = document.getElementById("para1");
+  No.innerHTML = "No!";
+}
+  
+  
+===Tip
+
+~~
+var bills = [50.23, 19.12, 34.01, 100.11, 12.15, 9.90, 29.11, 12.99, 10.00, 99.22, 102.20, 100.10, 6.77, 2.22];
+
+var tip = bills.map(function(bill){
+  return bill * 0.15;
+});
+
+console.log(tip);
+
+
+===Objects
+
+~~
+var friends = {};
+friends.bill = {
+  firstName: "Billy",
+  lastName: "Grey",
+  number: "124",
+  address: ['One Love','Heartline','LA','98052']
+};
+
+list(friends);
+  
+  
+  
+  
+  -->
+</html>
+
+
